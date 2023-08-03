@@ -9,7 +9,7 @@
 # General
 --------------------------------------------------------------*/
 html {
-  --principal: ;
+  --principal: #ffffff;
   --secondary: #122066;
   --terciary: #E36E0A;
   --hovered: #1D34A6;
@@ -229,6 +229,7 @@ a:hover {
 .pagination-a .pagination .page-link:active,
 .pagination-a .pagination .page-link:focus {
   background-color: var(--secondary);
+  color: var(--principal);
 }
 
 .pagination-a .pagination .page-link span {
@@ -256,6 +257,7 @@ a:hover {
 
 .pagination-a .pagination .page-item.active .page-link {
   background-color: var(--secondary);
+  color: var(--principal);
 }
 
 .a {
@@ -422,7 +424,7 @@ a:hover {
 .carousel-pagination .swiper-pagination-bullet {
   width: 18px;
   height: 10px;
-  background-color: #555;
+  background-color: var(--secondary);
   margin: 0 4px;
   border-radius: 0;
   opacity: 1;
@@ -430,7 +432,7 @@ a:hover {
 }
 
 .carousel-pagination .swiper-pagination-bullet-active {
-  background-color: var(--secondary);
+  background-color: var(--terciary);
   width: 36px;
 }
 
@@ -576,7 +578,6 @@ a:hover {
 
 .btn.btn-a,
 .btn.btn-b {
-  border-radius: 0;
   padding: 1rem 3rem;
   letter-spacing: 0.05rem;
 }
@@ -611,6 +612,21 @@ a:hover {
 .btn.btn-b-n:hover {
   background-color: var(--hovered);
   color: #ffffff;
+}
+
+.btn.btn-ws {
+  padding: 1rem 3rem;
+  border: solid 1px #26D366;
+  color: #26D366;
+}
+
+.btn.btn-ws:hover {
+  background-color: #26D366;
+  color: var(--principal);
+}
+
+.btn-ws:hover{
+  color: #26D366;
 }
 
 .navbar-toggle-box {
@@ -995,14 +1011,14 @@ a:hover {
 .intro .swiper-pagination .swiper-pagination-bullet {
   width: 18px;
   height: 10px;
-  background-color: #ffffff;
+  background-color: var(--secondary);
   border-radius: 0;
   opacity: 1;
   transition: 0.3s;
 }
 
 .intro .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: var(--secondary);
+  background-color: var(--terciary);
   width: 36px;
 }
 
@@ -1378,6 +1394,10 @@ a:hover {
   border-radius: 50px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+}
+
+.price-box .price-a a{
+  color: var(--principal);
 }
 
 .card-footer-a {
@@ -2203,6 +2223,10 @@ footer .credits {
   font-size: 14px;
 }
 
+/*--------------------------------------------------------------
+# Brands Section
+--------------------------------------------------------------*/
+
 #logos {
   overflow: hidden;
 
@@ -2218,7 +2242,45 @@ footer .credits {
   }
 }
 
+@media (min-width: 576px) {
+  #logos .slider {
+    animation: slidein 30s linear infinite;
+  }
+}
+
+@media (min-width: 768px) {
+  #logos .slider {
+    animation: slidein-medium 30s linear infinite;
+  }
+}
+
+@media (min-width: 992px) {
+  #logos .slider {
+    animation: slidein-large 30s linear infinite;
+  }
+}
+
 @keyframes slidein {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-500%, 0, 0);
+  }
+}
+
+@keyframes slidein-medium {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-200%, 0, 0);
+  }
+}
+
+@keyframes slidein-large {
   from {
     transform: translate3d(0, 0, 0);
   }
@@ -2228,12 +2290,19 @@ footer .credits {
   }
 }
 
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
+/*--------------------------------------------------------------
+# Animation on scroll
+--------------------------------------------------------------*/
 
-  100% {
-    opacity: 1;
-  }
+.hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
 }

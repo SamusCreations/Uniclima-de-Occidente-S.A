@@ -119,7 +119,7 @@
   /**
    * Property carousel
    */
-  new Swiper('#property-carousel', {
+  new Swiper('#products-carousel', {
     speed: 600,
     loop: true,
     autoplay: {
@@ -195,7 +195,7 @@
   /**
    * Property Single carousel
    */
-  new Swiper('#property-single-carousel', {
+  new Swiper('#product-single-carousel', {
     speed: 600,
     loop: true,
     autoplay: {
