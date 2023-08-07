@@ -2,16 +2,17 @@
 # Animation on scroll
 --------------------------------------------------------------*/
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        console.log(entry)
-        if (entry.isIntersecting) {
-            entry.target.classList.add('show');
-        } else {
-            entry.target.classList.remove('show');
-        }
+$(document).ready(function () {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                $(entry.target).addClass('show');
+            }
+        });
+    });
+
+    const hiddenElements = $('.hidden');
+    hiddenElements.each(function () {
+        observer.observe(this);
     });
 });
-
-const hiddenElements = document.querySelectorAll('.hidden');
-hiddenElements.forEach((el) => observer.observe(el));
