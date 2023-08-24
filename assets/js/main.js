@@ -284,7 +284,6 @@ window.initMap = initMap;
 /* ==== Services Dropdown Menu ==== */
 $(document).ready(function () {
   const apiUrl = "https://uniclima-be-74r2-dev.fl0.io/api/service";
-
   // Hacer la solicitud AJAX al API
   $.ajax({
     url: apiUrl,
