@@ -343,3 +343,11 @@ fechaNacimientoInput.addEventListener("change", function() {
   edadInput.value = edad;
   console.log(edadInput.value)
 });
+
+
+
+
+
+
+//Post del contacto
+
