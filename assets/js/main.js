@@ -117,7 +117,7 @@
   });
 
   /**
-   * Property carousel
+   * Products carousel
    */
   new Swiper('#products-carousel', {
     speed: 600,
@@ -193,7 +193,7 @@
   });
 
   /**
-   * Property Single carousel
+   * Product Single carousel
    */
   new Swiper('#product-single-carousel', {
     speed: 600,
@@ -214,57 +214,6 @@
 /**
  * Google API Location 
  */
-/* function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 10.01688810481482, lng: -84.2130290973807 },
-    zoom: 9,
-  });
-
-  infoWindow = new google.maps.InfoWindow();
-
-  const locationButton = document.createElement("button");
-
-  locationButton.textContent = "Ver mi ubicacion";
-  locationButton.classList.add("custom-map-control-button");
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-  locationButton.addEventListener("click", () => {
-    // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-
-          infoWindow.setPosition(pos);
-          infoWindow.setContent("Ubicacion encontrada");
-          infoWindow.open(map);
-          map.setCenter(pos);
-        },
-        () => {
-          handleLocationError(true, infoWindow, map.getCenter());
-        },
-      );
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
-  });
-}
-//Manejo de Errores
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(
-    browserHasGeolocation
-      ? "Error: The Geolocation service failed."
-      : "Error: Your browser doesn't support geolocation.",
-  );
-  infoWindow.open(map);
-}
-
-window.initMap = initMap; */
-
 function initMap() {
   const comercioLatLng = { lat: 10.0974258, lng: -84.3829785 };
   const map = new google.maps.Map(document.getElementById("map"), {
@@ -332,14 +281,53 @@ function initMap() {
 
 window.initMap = initMap;
 
-// Calculando la edad y enviándola como campo oculto
-const fechaNacimientoInput = document.getElementById("birthdate");
-const edadInput = document.getElementById("edad");
+/* ==== Services Dropdown Menu ==== */
+$(document).ready(function () {
+  const apiUrl = "https://uniclima-be-74r2-dev.fl0.io/api/service";
 
-fechaNacimientoInput.addEventListener("change", function() {
-  const fechaNacimiento = new Date(fechaNacimientoInput.value);
-  const fechaActual = new Date();
-  const edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
-  edadInput.value = edad;
-  console.log(edadInput.value)
+  // Hacer la solicitud AJAX al API
+  $.ajax({
+    url: apiUrl,
+    method: "GET",
+    dataType: "json",
+    success: function (data) {
+      if (data) {
+        const dropdownMenu = $("#servicesDropdownMenu");
+        const serviceInstalacion = $(".service-instalacion");
+        const serviceMantenimiento = $(".service-mantenimiento");
+        const serviceReparacion = $(".service-reparacion");
+
+        // Iterar sobre los datos de los servicios
+        data.data.forEach(function (service) {
+          const serviceId = service._id;
+          const serviceName = service.name;
+
+          // Crear una etiqueta <a> con el enlace y nombre del servicio
+          const serviceLink = `<a class="dropdown-item" href="service-single.html?id=${serviceId}">${serviceName}</a>`;
+          const serviceHref = `service-single.html?id=${serviceId}`
+          
+          // Agregar la etiqueta <a> al menú desplegable
+          dropdownMenu.append(serviceLink);
+
+          switch (serviceName) {
+            case "Instalación":
+                serviceInstalacion.attr("href", serviceHref)
+              break;
+            case "Mantenimiento":
+                serviceMantenimiento.attr("href", serviceHref)
+              break;
+            case "Reparación":
+                serviceReparacion.attr("href", serviceHref)
+              break;
+          
+            default:
+              break;
+          }
+        });
+      }
+    },
+    error: function () {
+      console.log("Error al obtener los datos de los servicios.");
+    }
+  });
 });
