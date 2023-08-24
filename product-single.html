@@ -182,34 +182,44 @@
                 </div>
                 <div class="col-md-12 col-lg-6">
                   <div class="property-contact">
-                    <form class="form-a">
+                    <form class="form-a php-email-form" id="formulario" action="#" method="post" role="form">
                       <div class="row">
                         <div class="col-md-12 mb-1">
                           <div class="form-group">
-                            <input type="text" class="form-control form-control-lg form-control-a" id="inputName"
+                            <input type="text" class="form-control form-control-lg form-control-a" id="inputName" name="name"
                               placeholder="Nombre" required>
                           </div>
                         </div>
                         <div class="col-md-12 mb-1">
                           <div class="form-group">
-                            <input type="email" class="form-control form-control-lg form-control-a" id="inputEmail1"
+                            <input type="email" class="form-control form-control-lg form-control-a" id="inputEmail1" name="email"
                               placeholder="Email" required>
                           </div>
                         </div>
                         <div class="col-md-12 mb-1">
                           <div class="form-group">
-                            <textarea id="textMessage" class="form-control"
-                              placeholder="Quiero más información sobre..." name="message" cols="45" rows="8"
-                              required></textarea>
+                            <textarea id="textMessage" class="form-control" name="description"
+                              placeholder="Quiero más información sobre..." cols="45" rows="8" required></textarea>
                           </div>
                         </div>
+                    
+                        <div class="col-md-12 my-3">
+                          <div class="mb-3">
+                            <div class="loading">Cargando</div>
+                            <div class="error-message"></div>
+                            <div class="field-error-message">Llena todos los espacios</div>
+                            <div class="sent-message">Mensaje Enviado</div>
+                          </div>
+                        </div>
+                    
                         <div class="col-md-12 mt-3">
-                          <button type="submit" class="btn btn-a mt-1">Cotizar</button>
+                          <button type="button" class="btn btn-a mt-1" id="enviarBoton">Cotizar</button>
                           <a href="https://wa.me/50687512896" class="btn btn-ws mt-1"><strong><i class="bi bi-whatsapp">
                                 Consultar Whatsapp</i></strong></a>
                         </div>
                       </div>
                     </form>
+                    
                   </div>
                 </div>
               </div>
@@ -352,6 +362,7 @@
   <script src="assets/js/main.js"></script>
 
   <script src="assets/js/products.js"></script>
+  <script src="assets/js/form.js"></script>
 
 </body>
 

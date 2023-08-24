@@ -285,23 +285,6 @@ window.initMap = initMap;
 $(document).ready(function () {
   const apiUrl = "https://uniclima-be-74r2-dev.fl0.io/api/service";
 
-<<<<<<< HEAD
-fechaNacimientoInput.addEventListener("change", function() {
-  const fechaNacimiento = new Date(fechaNacimientoInput.value);
-  const fechaActual = new Date();
-  const edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
-  edadInput.value = edad;
-  console.log(edadInput.value)
-});
-
-
-
-
-
-
-//Post del contacto
-
-=======
   // Hacer la solicitud AJAX al API
   $.ajax({
     url: apiUrl,
@@ -348,4 +331,3 @@ fechaNacimientoInput.addEventListener("change", function() {
     }
   });
 });
->>>>>>> 96dd4e733af817da0918a13d630f78be3c867a5d
