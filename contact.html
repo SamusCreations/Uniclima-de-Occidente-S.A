@@ -149,7 +149,10 @@
           <div class="col-sm-12 section-t8">
             <div class="row">
               <div class="col-md-7">
-                <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                <form id="formulario" action="#" method="post" role="form" class="php-email-form">
+
+
+
                   <div class="row">
                     <div class="col-md-12 mb-3">
                       <div class="form-group">
@@ -173,7 +176,7 @@
                       <div class="form-group">
                         <label for="rangoIngreso" class="form-label">Rango de ingresos: </label>
                         <output for="rangoIngreso" id="rangoIngresoOutput">0</output>
-                        <input id="rangoIngreso" type="range" min="0" step="10000" value="0" max="10000000"
+                        <input name="rangoIngreso" id="rangoIngreso" type="range" min="0" step="10000" value="0" max="10000000"
                           class="form-range form-control form-control-lg form-control-a" required>
                       </div>
                     </div>
@@ -207,12 +210,13 @@
                       <div class="mb-3">
                         <div class="loading">Cargando</div>
                         <div class="error-message"></div>
-                        <div class="sent-message">El mensaje ha sido enviado. Gracias!</div>
+                        <div class="field-error-message">LLena todos los espacios</div>
+                        <div class="sent-message">El Usuario de Contacto ha sido Creado</div>
                       </div>
                     </div>
 
                     <div class="col-md-12 text-center">
-                      <button type="submit" class="btn btn-a">Enviar Mensaje</button>
+                      <button type="button" id="enviarBoton">Enviar Mensaje</button>
                     </div>
                   </div>
                 </form>
@@ -424,7 +428,12 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <!-- Template Main JS File -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="assets/js/main.js"></script>
+<<<<<<< HEAD
+  <script src="assets/js/contact.js"></script>
+  
+=======
 
   <script>
     // Calculando la edad y enviándola como campo oculto
@@ -439,6 +448,7 @@
       console.log(edadInput.value)
     });
   </script>
+>>>>>>> 96dd4e733af817da0918a13d630f78be3c867a5d
 </body>
 
 </html>
